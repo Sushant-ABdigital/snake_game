@@ -1,12 +1,12 @@
-/* eslint-disable func-style */
+const {IP, PORT } = require('./constants');
 const net = require("net");
 /**
  * Establishes connection with the game server
  */
 const connect = function() {
   const conn = net.createConnection({
-    host: "192.168.15.225", //Server Address
-    port: 50541
+    host: IP, //Server Address
+    port: PORT
   });
 
   // interpret incoming data as text
@@ -20,13 +20,12 @@ const connect = function() {
 
   //Moves
   conn.on("connect", () => {
-    const m = setInterval(() => {
-      conn.write("Move: up");
-      conn.write("Move: right");
-    }, 500);
+    // const m = setInterval(() => {
+    //   conn.write("Move: up");
+    // }, 500);
 
-    //Settting timeout to run after 5000 ms
-    setTimeout(() => clearInterval(m), 3000);
+    // //Settting timeout to run after 5000 ms
+    // setTimeout(() => clearInterval(m), 1000);
   });
 
   //To receive data from the server
